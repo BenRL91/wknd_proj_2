@@ -32,11 +32,15 @@ div {
   text-align: left;
   width: 1200px; }
 
+span.return_box .six {
+  margin-bottom: 20px; }
+
 .footer {
   background-color: #443d50;
   color: gray;
   width: 100%;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 90px;
   padding-bottom: 40px;
+  margin-top: 50px;
   font-size: 18px; }
