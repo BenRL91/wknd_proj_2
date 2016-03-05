@@ -1,3 +1,6 @@
+body {
+  background-color: #EAEBF9; }
+
 .banner {
   height: 200px;
   background-image: url("../banner.jpg"); }
@@ -5,3 +8,8 @@
 h1 {
   font-weight: normal;
   font-size: 20px; }
+
+.answer_box {
+  font-size: 35px;
+  padding-top: 5%;
+  text-align: center; }
