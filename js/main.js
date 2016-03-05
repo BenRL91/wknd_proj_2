@@ -127,17 +127,48 @@ function listWoodenItems(arr){
 // })
 
 
-function listItems8OrMore(arr){
-	if (arr.indexOf('Object' > -1)) {
-		return arr.filter(function (obj){
-			if (obj.materials.length >= 8) {
-				return obj
-			}
-		}).map(function (obj){
-			return "<div>" + obj.title + " has " + obj.materials.length + " materials " + "<br>" + obj.materials + "</div>" + "<br>"
-		}).join("")
-	}
-}
+// function listItems8OrMore(arr){
+// 	if (arr.indexOf('Object' > -1)) {
+// 		return arr.filter(function (obj){
+// 			if (obj.materials.length >= 8) {
+// 				return obj
+// 			}
+// 		}).map(function (obj){
+// 			return obj.title + " has " + obj.materials.length + " materials "
+// 		}).join("")
+// 	}
+// }
+
+var titles = items.filter(function (obj){
+  if (obj.materials.length >= 8) {
+    return obj
+  }
+}).map(function(obj){
+	return obj.title
+})
+
+
+var mats8orMore = items.filter(function (obj){
+  if (obj.materials.length >= 8) {
+    return obj
+  }
+}).map(function (obj){
+  return obj.materials
+})
+
+var title1 = titles.pop()
+var title2 = titles.pop()
+var mats1 = mats8orMore.pop()
+var mats2 = mats8orMore.pop()
+
+mats1 = mats1.map(function(mat){
+  return "<br>" + mat
+})
+
+mats2 = mats2.map(function(mat){
+	return "<br>" + mat
+})
+
 
 
 // var listMats1 = items.filter(function (obj){
@@ -168,11 +199,12 @@ var three = document.querySelector('.three');
 var four = document.querySelector('.four');
 var five = document.querySelector('.five');
 var six = document.querySelector('.six');
-one.innerHTML = "$" + Avg.toFixed(2)
+one.innerHTML = "The average price is $" + Avg.toFixed(2)
 two.innerHTML = "<div>" + getGoodPrices(items) + "</div>";
 three.innerHTML = gbpTitle(items) + " costs &pound;" + gbpPrice(items)
 four.innerHTML = "<div>" + listWoodenItems(items) + "</div>"
-five.innerHTML = "<div>" + listItems8OrMore(items) + "</div>"
+five.innerHTML = "<div>" + title1 + "<br>" + "<br>" + mats1.join('') + "<br>" + "<br>"
+ + title2 + "<br>" + "<br>" + mats2.join('') + "</div>"
 six.innerHTML = madeBySeller
 
 
