@@ -12,15 +12,18 @@
 // var avg = total / prices.length;
 // avg = avg.toFixed(2)
 
-function getAvg(arr){
-	if (arr.indexOf('Object' > -1)) {
-		return arr.map(function (obj){
-			return obj.price
-		}).reduce(function (a, b){
-			return a + b
-		}) / arr.length 
-	}
-}
+// function getAvg(arr){
+// 	if (arr.indexOf('Object' > -1)) {
+// 		return arr.map(function (obj){
+// 			return obj.price
+// 		}).reduce(function (a, b){
+// 			return a + b
+// 		}) / arr.length 
+// 	}
+// }
+
+var Avg = items.reduce(function (memo, obj)
+  {return memo + obj.price},0) / items.length
 
 // Created Array of objects with prices between
 // 14 and 18 dollars
@@ -38,7 +41,7 @@ function getGoodPrices(arr){
 			if (obj.currency_code === "USD"){
 			return obj.price > 14.00 && obj.price < 18.00}
 		}).map(function (obj){
-			return obj.title + "<br>"
+			return obj.title + "<br>" + "<br>"
 		}).join("")
 	}
 }
@@ -107,7 +110,7 @@ function listWoodenItems(arr){
 				return obj
 			}
 		}).map(function (obj){
-			return obj.title + " is made of wood." + "<br>"
+			return obj.title + " is made of wood." + "<br>" + "<br>"
 		}).join("")
 	}
 }
@@ -137,17 +140,17 @@ function listItems8OrMore(arr){
 }
 
 
-var listMats1 = items.filter(function (obj){
-	if (obj.materials.length >= 8) {
-		return obj
-	}
-})[0].materials
+// var listMats1 = items.filter(function (obj){
+// 	if (obj.materials.length >= 8) {
+// 		return obj
+// 	}
+// })[0].materials
 
-var listMats2 = items.filter(function (obj){
-	if (obj.materials.length >= 8) {
-		return obj
-	}
-})[1].materials
+// var listMats2 = items.filter(function (obj){
+// 	if (obj.materials.length >= 8) {
+// 		return obj
+// 	}
+// })[1].materials
 
 //Items made by sellers total 
 
@@ -165,7 +168,7 @@ var three = document.querySelector('.three');
 var four = document.querySelector('.four');
 var five = document.querySelector('.five');
 var six = document.querySelector('.six');
-one.innerHTML = "$" + getAvg(items).toFixed(2)
+one.innerHTML = "$" + Avg.toFixed(2)
 two.innerHTML = "<div>" + getGoodPrices(items) + "</div>";
 three.innerHTML = gbpTitle(items) + " costs &pound;" + gbpPrice(items)
 four.innerHTML = "<div>" + listWoodenItems(items) + "</div>"
