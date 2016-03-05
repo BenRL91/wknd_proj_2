@@ -38,8 +38,8 @@ function getGoodPrices(arr){
 			if (obj.currency_code === "USD"){
 			return obj.price > 14.00 && obj.price < 18.00}
 		}).map(function (obj){
-			return obj.title
-		})
+			return obj.title + "<br>"
+		}).join("")
 	}
 }
 
@@ -61,21 +61,21 @@ function gbpTitle(arr){
 	}
 }
 
-var gbpPrice = items.filter(function (obj){
-	if (obj['currency_code'] === "GBP") {
-		return obj
-	}
-})[0].price
-
-// function gbpPrice(arr){
-// 	if (arr.indexOf('Object' > -1)) {
-// 		return arr.filter(function (obj){
-// 			if (obj.currency_code === "GBP") {
-// 				return obj
-// 			}
-// 		})[0].price
+// var gbpPrice = items.filter(function (obj){
+// 	if (obj['currency_code'] === "GBP") {
+// 		return obj
 // 	}
-// }
+// })[0].price
+
+function gbpPrice(arr){
+	if (arr.indexOf('Object' > -1)) {
+		return arr.filter(function (obj){
+			if (obj.currency_code === "GBP") {
+				return obj
+			}
+		})[0].price
+	}
+}
 
 // Display list of items made of wood
 
@@ -87,18 +87,30 @@ var gbpPrice = items.filter(function (obj){
 // 	return obj.title
 // });
 
+// function listWoodenItems(arr){
+// 	if (arr.indexOf('Object' > -1)) {
+// 		return arr.filter(function (obj){
+// 			if (obj.materials.indexOf('wood') > -1){
+// 				return obj
+// 			}
+// 		}).map(function (obj){
+// 			return obj.title + " is made of wood." + "<br>"
+// 		}).pop()
+// 	}
+// }
+
+
 function listWoodenItems(arr){
 	if (arr.indexOf('Object' > -1)) {
 		return arr.filter(function (obj){
-			if (obj.materials.indexOf('wood') > -1) {
+			if (obj.materials.indexOf('wood') > -1){
 				return obj
 			}
 		}).map(function (obj){
-			return obj.title
-		});
+			return obj.title + " is made of wood." + "<br>"
+		}).join("")
 	}
 }
-
 //Which ones made of more than 8 mats,
 // display title, number of items, 
 //and mats made of
@@ -119,8 +131,8 @@ function listItems8OrMore(arr){
 				return obj
 			}
 		}).map(function (obj){
-			return obj.title + " has " + obj.materials.length + " materials"
-		})
+			return "<div>" + obj.title + " has " + obj.materials.length + " materials " + "<br>" + obj.materials + "</div>" + "<br>"
+		}).join("")
 	}
 }
 
@@ -153,11 +165,11 @@ var three = document.querySelector('.three');
 var four = document.querySelector('.four');
 var five = document.querySelector('.five');
 var six = document.querySelector('.six');
-one.innerHTML = getAvg(items).toFixed(2)
-two.innerHTML = getGoodPrices(items);
+one.innerHTML = "$" + getAvg(items).toFixed(2)
+two.innerHTML = "<div>" + getGoodPrices(items) + "</div>";
 three.innerHTML = gbpTitle(items) + " costs &pound;" + gbpPrice(items)
-four.innerHTML = listWoodenItems(items)
-five.innerHTML = "<div>" + listItems8OrMore(items) + "</div>" + "<div>" + listMats1 + "</div>"+ listMats2
+four.innerHTML = "<div>" + listWoodenItems(items) + "</div>"
+five.innerHTML = "<div>" + listItems8OrMore(items) + "</div>"
 six.innerHTML = madeBySeller
 
 

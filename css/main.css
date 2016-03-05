@@ -1,15 +1,42 @@
 body {
+  border: 3px solid black;
   background-color: #EAEBF9; }
 
 .banner {
-  height: 200px;
-  background-image: url("../banner.jpg"); }
+  height: 150px;
+  width: 100%;
+  background-image: url("../banner.jpg");
+  background-size: 100%;
+  border: 1px solid black;
+  border-bottom: none; }
 
 h1 {
   font-weight: normal;
-  font-size: 20px; }
+  color: #4b485b;
+  font-size: 35px;
+  background-color: white;
+  margin: 0;
+  padding: 20px 0px; }
 
 .answer_box {
-  font-size: 35px;
+  color: #4b485b;
+  font-size: 24px;
   padding-top: 5%;
   text-align: center; }
+  .answer_box .answer_text {
+    font-size: 35px; }
+
+div {
+  background-color: #EAEBF9;
+  margin: auto;
+  text-align: left;
+  width: 1200px; }
+
+.footer {
+  background-color: #443d50;
+  color: gray;
+  width: 100%;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  font-size: 18px; }
